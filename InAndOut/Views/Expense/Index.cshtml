@@ -1,0 +1,40 @@
+﻿@model IEnumerable<InAndOut.Models.Expense>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-controller="Expense" asp-action="Create" class="btn btn-primary">Create Expense</a>
+</p>
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpenseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ammount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpenseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ammount)
+            </td>
+            <td>
+                <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-primary">Update</a> |           
+                <a asp-controller="Expense" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
